@@ -1,4 +1,4 @@
-import { signInUser } from "@/app/actions/auth/SignInUser";
+import { signInUser } from "@/app/actions/auth/signInUsers";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -13,13 +13,13 @@ export const authOptions = {
             // e.g. domain, username, password, 2FA token, etc.
             // You can pass any HTML attribute to the <input> tag through the object.
             credentials: {
-                email: { label: "Email", type: "email", placeholder: "Enter email" },
-                password: { label: "Password", type: "password" },
+                email: { label: "Email", type: "text", placeholder: "Enter your email" },
+                password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
                 console.log(credentials);
                 // Add logic here to look up the user from the credentials supplied
-                const user = await signInUser(credentials.email, credentials.password);
+                const user = await signInUser(credentials)
                 console.log(user);
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
@@ -34,7 +34,7 @@ export const authOptions = {
         })
     ],
     pages: {
-        signIn: '/signin', // Displays signin buttons
+        signIn: "/signin",
     }
 }
 

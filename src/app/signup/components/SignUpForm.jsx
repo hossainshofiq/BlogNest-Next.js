@@ -17,9 +17,6 @@ const SignUpForm = () => {
         const password = form.password.value;
         // const confirmPassword = form.confirmPassword.value;
 
-        // console.log({ name, email, password });
-        await signUpUser({ name, email, password })
-
         // if (!email || !password) {
         //     alert("All fields are required");
         //     return;
@@ -30,19 +27,10 @@ const SignUpForm = () => {
         //     return;
         // }
 
-        // toast("Sign up successful! Please log in.", {
-        //     type: "success",
-        //     position: "top-right",
-        //     autoClose: 3000,
-        //     hideProgressBar: false,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        // })
-
-
-        // TODO: Send data to your backend API or authentication service
+        // console.log({ name, email, password });
+        await signUpUser({ name, email, password });
+        toast.success("Sign up successful! Please log in.");
+        form.reset();
     };
 
 

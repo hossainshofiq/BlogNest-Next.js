@@ -1,8 +1,8 @@
 "use client";
-import { signIn } from 'next-auth/react';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
+import { signIn } from "next-auth/react"
+import { toast, ToastContainer } from 'react-toastify';
 
 const SignInForm = () => {
 
@@ -10,48 +10,49 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setIsLoading(true);
+        setIsLoading(true);
 
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         // const rememberMe = form['remember-me'].checked;
-        await signIn("credentials", { email, password, redirect: false });
+
+        try {
+            await signIn('credentials', {
+                email,
+                password,
+                callbackUrl: "/",
+            })
+        } catch (error) {
+            alert("Something went wrong!")
+            // form.reset();
+        }
+
+        // await signIn('credentials', {
+        //     email,
+        //     password,
+        //     redirect: false
+        // })
+        // toast.success("Logged in successfully!");
+        // form.reset();
 
         console.log({ email, password });
     }
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setIsLoading(true);
-    //     setError('');
-
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-
-    //     try {
-    //         const result = await signIn('credentials', {
-    //             email,
-    //             password,
-    //             redirect: false
-    //         });
-
-    //         if (result?.error) {
-    //             setError(result.error);
-    //         } else {
-    //             Router.push('/dashboard'); // Redirect on success
-    //         }
-    //     } catch (error) {
-    //         setError('An error occurred during sign in');
-    //         console.error('Sign in error:', error);
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
 
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -59,11 +60,9 @@ const SignInForm = () => {
                     </label>
                     <div className="mt-1">
                         <input
-                            id="email"
                             name="email"
                             type="email"
-                            autoComplete="email"
-                            required
+                            placeholder='Enter your email'
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         />
                     </div>
@@ -75,11 +74,9 @@ const SignInForm = () => {
                     </label>
                     <div className="mt-1">
                         <input
-                            id="password"
                             name="password"
                             type="password"
-                            autoComplete="current-password"
-                            required
+                            placeholder='Enter your password'
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         />
                     </div>
