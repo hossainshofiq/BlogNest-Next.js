@@ -8,7 +8,7 @@ export const signUpUser = async (payload) => {
     const usersCollection = dbConnect(collectionNamesObject.usersCollection);
 
     const { email, password } = payload;
-    if (!email || !password) return { success: false };
+    if (!email || !password) return null;
 
 
     const user = await usersCollection.findOne({ email: payload.email });
@@ -17,11 +17,11 @@ export const signUpUser = async (payload) => {
         payload.password = hashedPassword;
 
         const result = await usersCollection.insertOne(payload);
-        const { acknowledged, insertedId } = result;
-        return { acknowledged, insertedId };
+        result.insertedId = result.insertedId.toString();
+        return result;
     }
 
-    return { success: false };
+    return null;
 
 }
 

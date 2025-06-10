@@ -1,10 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
 import Link from 'next/link';
 import SignUpForm from './components/SignUpForm';
-// import { signIn } from 'next-auth/react';
 
 const SignUpPage = () => {
     const [name, setName] = useState('');
@@ -13,62 +11,6 @@ const SignUpPage = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    // const router = useRouter();
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     if (password !== confirmPassword) {
-    //         setError('Passwords do not match');
-    //         return;
-    //     }
-
-    //     setIsLoading(true);
-    //     setError('');
-
-    //     try {
-    //         const response = await fetch('/api/auth/signup', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 name,
-    //                 email,
-    //                 password,
-    //             }),
-    //         });
-
-    //         const data = await response.json();
-
-    //         if (!response.ok) {
-    //             throw new Error(data.message || 'Something went wrong');
-    //         }
-
-    //         // Automatically sign in the user after successful registration
-    //         const result = await signIn('credentials', {
-    //             redirect: false,
-    //             email,
-    //             password,
-    //         });
-
-    //         if (result?.error) {
-    //             setError(result.error);
-    //         } else {
-    //             router.push('/');
-    //         }
-    //     } catch (err) {
-    //         setError(err.message || 'Registration failed');
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
-
-    // const handleGoogleSignUp = async () => {
-    //     setIsLoading(true);
-    //     setError('');
-    //     await signIn('google', { callbackUrl: '/' });
-    // };
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

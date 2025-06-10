@@ -147,6 +147,7 @@ export default async function Blog() {
                                 layout="fill"
                                 // objectFit="cover"
                                 className="hover:scale-105 transition-transform duration-300 object-cover"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
 

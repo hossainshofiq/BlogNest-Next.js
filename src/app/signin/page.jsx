@@ -1,8 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-// import Head from 'next/head';
-import { signIn } from 'next-auth/react';
-// import { useRouter } from 'next/router';
 import Link from 'next/link';
 import SignInForm from './components/SignInForm';
 
@@ -11,33 +8,6 @@ const SignInPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    // const router = useRouter();
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     setIsLoading(true);
-    //     setError('');
-
-    //     const result = await signIn('credentials', {
-    //         redirect: false,
-    //         email,
-    //         password,
-    //     });
-
-    //     if (result?.error) {
-    //         setError(result.error);
-    //         setIsLoading(false);
-    //     } else {
-    //         router.push('/');
-    //     }
-    // };
-
-    // const handleGoogleSignIn = async () => {
-    //     setIsLoading(true);
-    //     setError('');
-    //     await signIn('google', { callbackUrl: '/' });
-    // };
-
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             {/* <Head>
