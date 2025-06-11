@@ -44,7 +44,7 @@ const Navbar = () => {
                         width={40} 
                         alt='User-Profile'
                         className='rounded-full border border-black'></Image>
-                        <button onClick={() => signOut()} className='btn'>Log Out</button>
+                        <button onClick={() => signOut()} className='btn'>Sign Out</button>
                     </> : <>
                         <Link href={"/signin"} className="btn">Sign In</Link>
                         <Link href={"/signup"} className="btn">Sign Up</Link>

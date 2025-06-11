@@ -115,7 +115,8 @@ const SignInForm = () => {
                     </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-1 gap-3">
+                {/* <div className="mt-6 grid grid-cols-1 gap-3"> */}
+                <div className="mt-6 flex justify-center items-center">
                     <SocialSignIn></SocialSignIn>
                     {/* <button
                         className={`w-full inline-flex items-center gap-2 justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
